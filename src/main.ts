@@ -1,17 +1,17 @@
 import dotenv from "dotenv";
 import { Configuration, CreateCompletionRequest, OpenAIApi } from "openai";
-import { completePrompt } from "./commands";
+import { completePrompt, startConversation } from "./commands";
 import { colorPrint } from "./helpers";
 
 const ORGANIZATION = "org-1uS68ddLJyWT1b7WPjpGVkNJ";
 dotenv.config();
 
-const prompt = "Batman is hungry and he misses his parents,";
+const prompt = "Explain the lore of Dragon Ball Z's most recent arc to me";
 const requestOptions: CreateCompletionRequest = {
   model: "text-davinci-002",
   prompt,
-  max_tokens: 1000,
-  temperature: 0,
+  max_tokens: 4000,
+  temperature: 1,
 };
 
 (async function main() {
@@ -21,9 +21,10 @@ const requestOptions: CreateCompletionRequest = {
     apiKey,
   });
   const openai = new OpenAIApi(configuration);
-  const results = await completePrompt(openai, requestOptions);
-  if (results) {
-    colorPrint("FgRed", prompt);
-    colorPrint("FgCyan", results[0]);
-  }
+  await startConversation(openai);
+  //   const results = await completePrompt(openai, requestOptions);
+  //   if (results) {
+  //     colorPrint("FgRed", prompt);
+  //     colorPrint("FgCyan", results[0]);
+  //   }
 })();
