@@ -18,6 +18,10 @@
   "homepage": "https://github.com/Ari-Kishon/GPT-playground#readme",
   "dependencies": {
     "@ts-tools/node": "^4.0.0",
+    "@types/node": "^18.6.2",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.20.0",
+    "openai": "^3.0.0",
     "typescript": "^4.7.4"
   }
 }
