@@ -16,8 +16,8 @@ export const startConversation = async (
       } = await openai.createCompletion({
         model: "text-davinci-002",
         prompt,
-        stop: ["\n"],
-        temperature: 1,
+        stop: [char1, char2],
+        temperature: 0.5,
       });
       if (choices) {
         const result = choices[0].text;
