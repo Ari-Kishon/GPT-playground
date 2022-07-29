@@ -3,9 +3,11 @@ import { colorPrint } from "../../helpers";
 
 export const startConversation = async (
   openai: OpenAIApi,
-  characters: string[] = ["Goku", "Glados"]
+  char1: string = "Goku",
+  char2: string = "Batman"
 ) => {
-  let prompt = `A long conversation between ${characters[0]} and ${characters[1]}.`;
+  let prompt = `A conversation between ${char1} and ${char2}.`;
+  const characters = [char1, char2];
   while (true) {
     for (const character of characters) {
       prompt = prompt + `\n${character}:`;
