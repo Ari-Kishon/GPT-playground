@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
 import { Command } from "commander";
-import { OpenAIApi } from "openai";
-import { completePrompt, askQuestion, characterChat } from "./commands";
+import { CreateCompletionRequest, OpenAIApi } from "openai";
+import {
+  completePrompt,
+  askQuestion,
+  characterChat,
+  asciiArt,
+} from "./commands";
 import { asyncQuestion, colorPrint, getConfiguration } from "./helpers";
 import readLine from "readline";
 
@@ -38,6 +43,17 @@ program.command("complete").action(async () => {
     colorPrint("FgRed", prompt);
     colorPrint("FgCyan", results[0]);
   }
+});
+
+program.command("ascii").action(async (char1: string, char2: string) => {
+  const readline = readLine.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  colorPrint("BgMagenta", "Which Ascii art should i generate?");
+  const prompt = (await asyncQuestion(readline)) as string;
+  const openai = new OpenAIApi(configuration);
+  await asciiArt(openai, prompt);
 });
 
 program

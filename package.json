@@ -5,7 +5,8 @@
   "scripts": {
     "complete": "node -r @ts-tools/node/r src/cli.ts complete",
     "talk": "node -r @ts-tools/node/r src/cli.ts talk",
-    "auto-chat": "node -r @ts-tools/node/r src/cli.ts auto-chat"
+    "auto-chat": "node -r @ts-tools/node/r src/cli.ts auto-chat",
+    "ascii": "node -r @ts-tools/node/r src/cli.ts ascii"
   },
   "repository": {
     "type": "git",
