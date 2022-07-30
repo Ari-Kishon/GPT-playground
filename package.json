@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "complete": "node -r @ts-tools/node/r src/cli.ts complete",
-    "talk": "node -r @ts-tools/node/r src/cli.ts talk"
+    "talk": "node -r @ts-tools/node/r src/cli.ts talk",
+    "auto-chat": "node -r @ts-tools/node/r src/cli.ts auto-chat"
   },
   "repository": {
     "type": "git",

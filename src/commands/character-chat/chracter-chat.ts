@@ -1,7 +1,7 @@
 import { OpenAIApi } from "openai";
 import { colorPrint } from "../../helpers";
 
-export const startConversation = async (
+export const characterChat = async (
   openai: OpenAIApi,
   char1: string = "Goku",
   char2: string = "Batman"
