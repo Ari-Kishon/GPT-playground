@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Command } from "commander";
 import { CreateCompletionRequest, OpenAIApi } from "openai";
-import { completePrompt, askQuestion } from "./commands";
+import { completePrompt, askQuestion, characterChat } from "./commands";
 import { colorPrint, getConfiguration } from "./helpers";
 import readLine from "readline";
 
@@ -33,6 +33,14 @@ program
       colorPrint("FgRed", prompt);
       colorPrint("FgCyan", results[0]);
     }
+  });
+
+program
+  .command("auto-chat")
+  .arguments("<char1> <char2>")
+  .action(async (char1: string, char2: string) => {
+    const openai = new OpenAIApi(configuration);
+    await characterChat(openai, char1, char2);
   });
 
 program.command("talk").action(async () => {
