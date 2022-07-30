@@ -1,9 +1,15 @@
 import { CreateCompletionRequest, OpenAIApi } from "openai";
+import { asyncQuestion, colorPrint } from "../../helpers";
+import readLine from "readline";
 
-export const completePrompt = async (
-  openai: OpenAIApi,
-  requestOptions: CreateCompletionRequest
-) => {
+interface ICompletePrompt {
+  openai: OpenAIApi;
+  requestOptions: CreateCompletionRequest;
+}
+export const completePrompt = async ({
+  openai,
+  requestOptions,
+}: ICompletePrompt) => {
   const { data } = await openai.createCompletion(requestOptions);
   if (data.choices) {
     return data.choices.map(({ text }) => text);
